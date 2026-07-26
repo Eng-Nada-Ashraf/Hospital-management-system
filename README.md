@@ -1,81 +1,54 @@
-# 🏥 Hospital Management System (Python + SQLite)
-
-A complete, console-based **Hospital Management System** built entirely with
-Python's standard library — no external/third-party packages required.
-Great as an academic project or portfolio piece.
-
-## Features
-
-| Module | Capabilities |
-|---|---|
-| **Patients** | Add, view, search, update, delete patient records |
-| **Doctors** | Add, view, search, delete, toggle availability |
-| **Appointments** | Book, view, cancel, mark as completed |
-| **Rooms & Admissions** | Add rooms, admit/discharge patients, track occupancy |
-| **Billing** | Generate bills, view all bills, mark as paid |
-| **Prescriptions** | Add prescriptions, view by patient |
-| **Reports** | Hospital-wide summary statistics dashboard |
-
-## Tech Stack
-
-- **Python 3** (no external dependencies)
-- **SQLite3** (built into Python) for persistent storage
-- Clean OOP design: separate manager class per module (`PatientManager`,
-  `DoctorManager`, `AppointmentManager`, `RoomManager`, `BillingManager`,
-  `PrescriptionManager`, `ReportManager`)
-
-## Project Structure
-
-```
+🏥 Hospital Management System (Python + SQLite + JSON)
+A complete, console-based Hospital Management System built entirely with Python’s standard library — no external/third-party packages required. Great as an academic project or portfolio piece.
+Features
+Module
+Capabilities
+Patients
+Add, view, search, update, delete patient records
+Doctors
+Add, view, search, delete, toggle availability
+Appointments
+Book, view, cancel, mark as completed
+Rooms & Admissions
+Add rooms, admit/discharge patients, track occupancy
+Reports
+Hospital-wide summary statistics dashboard
+Tech Stack
+Python (standard library only)
+SQLite3 for persistent storage of Patients and Doctors
+JSON files for Rooms and Appointments
+Clean OOP design: separate manager class per module (PatientManager, DoctorManager, AppointmentManager, RoomManager, ReportManager)
+Project Structure
 hospital_management_system/
-├── hospital_system.py   # Main application (run this)
-├── seed_data.py         # Optional: inserts sample demo data
-├── hospital.db          # Auto-created SQLite database (on first run)
+├── hospital_system.py      # Main application (run this)
+├── project_data.py         # Optional: inserts sample demo data
+├── hospital.db             # SQLite database (Patients & Doctors)
+├── appointments.json       # Appointment data
+├── rooms.json              # Room data
 └── README.md
-```
-
-## How to Run
-
-1. Make sure Python 3 is installed:
-   ```bash
-   python --version
-   ```
-
-2. (Optional but recommended for a demo) Populate sample data:
-   ```bash
-   python project_data.py
-   ```
-
-3. Run the application:
-   ```bash
-   python hospital_system.py
-   ```
-
-4. Navigate using the on-screen numbered menus.
-
-## Database Schema (Overview)
-
-- **patients** — id, name, age, gender, phone, address, blood_group, admitted, room_id
-- **doctors** — id, name, specialization, phone, available
-- **appointments** — id, patient_id, doctor_id, date, time, status, reason
-- **rooms** — id, room_number, room_type, occupied, price_per_day
-
-
-All tables are linked with foreign keys (e.g. an appointment links a patient
-to a doctor; a bill links to a patient), demonstrating relational database
-design principles.
-
-## Possible Extensions (Great for bonus points)
-
-- Add a login system for admins/doctors/receptionists (roles & permissions)
-- Export reports to PDF or CSV
-- Add a GUI using `tkinter`
-- Add data validation (e.g. phone number format, date format checks)
-- Convert to a web app using Flask
-
-## Notes
-
-- The database file `hospital.db` is created automatically the first time
-  you run the app — no manual setup needed.
-- All data is persisted between runs since it's stored in SQLite, not in
-  memory.
+How to Run
+Make sure Python is installed:
+python --version
+(Optional but recommended for a demo) Populate sample data:
+python project_data.py
+Run the application:
+python hospital_system.py
+Navigate using the on-screen numbered menus.
+Database Schema
+SQLite Database
+patients — id, name, age, gender, phone, address, blood_group, admitted, room_id
+doctors — id, name, specialization, phone, available
+JSON Files
+appointments.json — id, patient_id, doctor_id, date, time, status, reason
+rooms.json — id, room_number, room_type, occupied, price_per_day
+Possible Extensions (Great for bonus points)
+Add a login system for admins/doctors/receptionists (roles & permissions)
+Export reports to PDF or CSV
+Add a GUI using tkinter
+Add data validation (e.g. phone number format, date format checks)
+Convert to a web app using Flask
+Notes
+The SQLite database (hospital.db) is created automatically the first time you run the application.
+Patient and Doctor data are stored in SQLite.
+Room and Appointment data are stored in JSON files.
+All data is persisted between runs, ensuring information is not lost when the application is closed.
